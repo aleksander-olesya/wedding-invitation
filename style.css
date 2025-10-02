@@ -148,8 +148,8 @@ h2 {
 @media (max-width: 768px) {
     /* Контейнер растянем на весь видимый экран устройства */
     .card-container {
-        width: 100%;
         height: 100%;
+        width: 100wh;
         margin-top: 0;       /* убираем отрицательный отступ на мобильных */
         border-radius: 0;    /* обычно углы на весь экран не нужны */
         max-width: 100%;
@@ -169,4 +169,5 @@ h2 {
     .page-content { padding: 16px; }
     h2 { font-size: 1.6rem; }
 }
+
 
