@@ -1,0 +1,151 @@
+/* style.css */
+
+body {
+    font-family: 'Pacifico', cursive; /* Добавлен красивый шрифт для всего текста на странице */
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(250, 247, 233); /* Замените на нужный вам цвет фона сайта */
+}
+
+.card-container {
+    width: 500px;
+    height: 75%;
+    margin-top: -75px;
+    background-color: #ffc; /* Замените на ваш цвет фона */
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.card.open .page:first-child {
+    transform: rotateY(-180deg);
+}
+
+
+.animation-circle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #3498db; /* Замените цвет на ваш нужный */
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    transition: transform 0.8s ease-in-out;
+}
+
+.card .page:first-child {
+    transform-origin: left;
+    transform: rotateY(0deg);
+    z-index: 2;
+    background: url('0.jpg') center/cover; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+    background-size: 100% 100%; /* Изменено на 100% 100% */
+}
+
+.card .page:last-child {
+    transform-origin: left;
+    transform: rotateY(0deg);
+    z-index: -1;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 20px;
+    background-size: 100% 100%; /* Изменено на 100% 100% */
+}
+
+.card .page:first-child .page-content h2 {
+    position: relative;
+    display: inline-block;
+}
+
+
+.card.open .page:last-child {
+    transform: rotateY(0deg);
+}
+
+.page-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+h2 {
+    margin: 0;
+    color: #333;
+}
+
+
+.card .page:last-child .page-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+
+
+.card:active {
+    outline: none; /* Убираем стандартное выделение */
+    -webkit-tap-highlight-color: transparent; /* Для браузеров на основе WebKit (например, Chrome, Safari) */
+}
+
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 0.25;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+  }
+  
+  .card .page:first-child::before {
+    content: '';
+    position: absolute;
+    width: 35px; /* Изменено на размер внешнего круга */
+    height: 35px; /* Изменено на размер внешнего круга */
+    border-radius: 50%;
+    top: 63%;
+    left: 47%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 10px #c4c4c4, 0 0 0 20px #8d8d8d; /* Добавлены две тени для эффекта двух кругов */
+    animation: pulse 3s infinite ease-in-out;
+  }
